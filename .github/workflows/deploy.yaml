@@ -16,10 +16,10 @@ jobs:
         if: env.DEPLOY_HOOK_URL != ''
         run: |
           curl -X POST "$DEPLOY_HOOK_URL"
-
-      - name: Fail When Hook Is Missing
+      
+      - name: Skip Deploy Hook (Secret Not Set)
         if: env.DEPLOY_HOOK_URL == ''
         run: |
-          echo "The ENV_DEPLOY_HOOK secret is not set in the repository." >&2
-          exit 1
+          echo "ENV_DEPLOY_HOOK secret is not set. Skipping deploy hook trigger."
+          echo "If Render has auto-deploy enabled, it will deploy automatically from GitHub."
 

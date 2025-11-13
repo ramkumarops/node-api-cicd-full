@@ -1,0 +1,24 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOOK_URL: ${{ secrets.ENV_DEPLOY_HOOK }}
+    steps:
+      - name: Trigger Render Deploy Hook
+        if: env.DEPLOY_HOOK_URL != ''
+        run: |
+          curl -X POST "$DEPLOY_HOOK_URL"
+
+      - name: Fail When Hook Is Missing
+        if: env.DEPLOY_HOOK_URL == ''
+        run: |
+          echo "The ENV_DEPLOY_HOOK secret is not set in the repository." >&2
+          exit 1
+

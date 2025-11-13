@@ -9,7 +9,7 @@ describe('GET /users', () => {
 
     expect(response.body).toEqual([
       { id: 100, name: 'John Doe' },
-      { id: 101, name: 'ram kumar' }
+      { id: 101, name: 'ram kumara' }
     ]);
   });
 });

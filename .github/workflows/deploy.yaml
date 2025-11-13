@@ -13,6 +13,20 @@ jobs:
     env:
       DEPLOY_HOOK_URL: ${{ secrets.ENV_DEPLOY_HOOK }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run tests
+        run: npm test
+      
       - name: Trigger Render Deploy Hook
         if: env.DEPLOY_HOOK_URL != ''
         run: |

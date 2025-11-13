@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+# This workflow will deploy to Render when a push to the main branch is made.
 jobs:
   deploy:
     runs-on: ubuntu-latest

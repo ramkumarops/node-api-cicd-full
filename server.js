@@ -9,7 +9,7 @@ app.listen(3000, () => {
 
 app.get('/', (req, res) => {
 
-    res.send('Hello');
+    res.send('Hello 2');
 });
 
 export default app;

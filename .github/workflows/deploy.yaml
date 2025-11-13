@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     env:
       DEPLOY_HOOK_URL: ${{ secrets.ENV_DEPLOY_HOOK }}
     steps:
